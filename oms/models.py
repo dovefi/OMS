@@ -44,7 +44,7 @@ class Server_list(models.Model):
 class Module_list(models.Model):
     module_name    = models.CharField(max_length=20, verbose_name=VB_MODULE_LIST['vb_mn'])
     module_caption = models.CharField(max_length=255, verbose_name=VB_MODULE_LIST['vb_mc'])
-    models_extend  = models.CharField(max_length=2000, verbose_name=VB_MODULE_LIST['vb_me'])
+    module_extend  = models.CharField(max_length=2000, verbose_name=VB_MODULE_LIST['vb_me'])
 
 
 
