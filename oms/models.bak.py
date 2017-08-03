@@ -11,10 +11,10 @@ VB_SERVER_APP_CATEG = {
     'vb_acn' : 'name of service application category ',
 }
 VB_SERVER_LIST = {
-    'vb_sn' : 'server name',
-    'vb_sw' : 'server public network ip',
-    'vb_sl' : 'server inner network ip',
-    'vb_so' : 'OS of server',
+    'vb_sn'  : 'server name',
+    'vb_sw'  : 'server public network ip',
+    'vb_sl'  : 'server inner network ip',
+    'vb_so'  : 'OS of server',
     'vb_sai' : 'id of service application category',
 }
 VB_MODULE_LIST = {
@@ -29,6 +29,12 @@ VB_SERVER_HISTORY = {
     'vb_hd'  : 'happen date',
     'vb_dd'  : 'insert into db date',
     'vb_hc'  : 'history command',
+}
+VB_OMS_USER = {
+    'vb_un'  : 'user name',
+    'vb_up'  : 'user password',
+    'vb_ue'  : 'user email',
+    'vb_uct' : 'user create time',
 }
 
 # service function category
@@ -56,12 +62,19 @@ class Module_list(models.Model):
 
 # server history
 class Server_history(models.Model):
-    history_id = models.IntegerField(help_text=VB_SERVER_HISTORY['vb_hid'])
-    server_list = models.ForeignKey(Server_list, help_text=VB_SERVER_HISTORY['vb_hip'])
-    history_user = models.CharField(max_length=15, help_text=VB_SERVER_HISTORY['vb_hu'])
+    history_id       = models.IntegerField(help_text=VB_SERVER_HISTORY['vb_hid'])
+    server_list      = models.ForeignKey(Server_list, help_text=VB_SERVER_HISTORY['vb_hip'])
+    history_user     = models.CharField(max_length=15, help_text=VB_SERVER_HISTORY['vb_hu'])
     history_datetime = models.DateTimeField(help_text=VB_SERVER_HISTORY['vb_hd'])
-    db_datetime = models.DateTimeField(help_text=VB_SERVER_HISTORY['vb_dd'])
-    history_command = models.CharField(max_length=255, help_text=VB_SERVER_HISTORY['vb_hc'])
+    db_datetime      = models.DateTimeField(help_text=VB_SERVER_HISTORY['vb_dd'])
+    history_command  = models.CharField(max_length=255, help_text=VB_SERVER_HISTORY['vb_hc'])
+
+# oms user
+class Oms_user(models.Model):
+    user_name        = models.CharField(max_length=11, help_text=VB_OMS_USER['vb_un'])
+    user_password    = models.CharField(max_length=15, help_text=VB_OMS_USER['vb_up'])
+    user_email       = models.CharField(max_length=30, help_text=VB_OMS_USER['vb_ue'])
+    user_create_time = models.DateTimeField(help_text=VB_OMS_USER['vb_uct'])
 
 
 
