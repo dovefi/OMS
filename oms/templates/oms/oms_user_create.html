@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create user</title>
+</head>
+<body>
+    <form method="post">
+    {% csrf_token %}
+        <table>
+            <tr><th>user_name</th><td>{{ form.user_name }}</td></tr>
+            <tr><th>user_password</th><td>{{ form.user_password }}</td></tr>
+            <tr><th>user_email</th><td>{{ form.user_email }}</td></tr>
+            <tr><td colspan="2"><input type="submit" /></td></tr>
+        </table>
+    </form>
+</body>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+</html>
