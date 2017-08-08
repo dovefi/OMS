@@ -9,6 +9,7 @@ VB_MODULE_LIST = {
     'vb_me' : 'module extend',
 }
 
+
 # list of module
 class Module_list(models.Model):
     module_name    = models.CharField(max_length=20, verbose_name=VB_MODULE_LIST['vb_mn'])

@@ -1,9 +1,12 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from ..models import Oms_user
-from django.template import loader
+# from django.template import loader
 from django.views import generic
 from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
+import logging
+
+logger = logging.getLogger(__name__)
 
 __all__ = ['IndexView',
            'CreateUserView',
@@ -12,17 +15,22 @@ __all__ = ['IndexView',
 class IndexView(generic.ListView):
     template_name = 'oms/index.html'
     context_object_name = 'user_list'
+    logger.info("get user list success !")
+
     def get_queryset(self):
         """ return user list """
         return Oms_user.objects.all()
 
+
 class CreateUserView(CreateView):
     model = Oms_user
-    fields ='__all__'
+    fields = '__all__'
     success_url = reverse_lazy('oms:index')
     template_name_suffix = '_create'
 
-    # def index(request):
+    # def post(self, request, *args, **kwargs):
+    #     logger.info(request)
+    # def login(request):
     #     template = loader.get_template('oms/index.html')
     #     user_list = Oms_user.objects.all()
     #     content = {

@@ -134,3 +134,44 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+LOG_LEVEL= 'DEBUG' if DEBUG else 'INFO'
+
+LOGGING = {
+    'version' : 1,
+    'disable_existing_loggers' : False,
+    'formatters' : {
+        'verbose' : {
+            'format' : '%(asctime)s [%(levelname)s] %(name)s:%(lineno)d %(message)s',
+            # 'format' : '%(asctime)s %(levelname)s %(module)s %(process)d %(thread)d %(message)s',
+        },
+        'simple' : {
+            'format' : '%(levelname)s %(message)s'
+        },
+    },
+    'handlers' : {
+        'file' : {
+            'level' : LOG_LEVEL,
+            'class' : 'logging.FileHandler',
+            'filename' : '/github/OMS/logs/debug.log',
+            'formatter' : 'verbose',
+        },
+        'console' : {
+            'level' : LOG_LEVEL,
+            'class' : 'logging.StreamHandler',
+            'formatter' : 'verbose',
+        }
+    },
+    'loggers' : {
+        'django.request' : {
+            'handlers' : ['file'],
+            'level' : LOG_LEVEL,
+            'propagate' : True,
+        },
+        'oms' : {
+            'handlers' : ['file', 'console'],
+            'level' : LOG_LEVEL,
+            'propagate' : True,
+        },
+    },
+}

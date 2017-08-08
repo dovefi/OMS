@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 from . import views
 
-#namespace oms - Usage  oms:index
+# namespace oms - Usage  oms:index
 app_name = 'oms'
 
 urlpatterns = [

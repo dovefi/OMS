@@ -9,6 +9,7 @@ VB_OMS_USER = {
     'vb_ulmt' : 'user last modify time',
 }
 
+
 # oms user
 class Oms_user(models.Model):
     user_name             = models.CharField(max_length=11, verbose_name=VB_OMS_USER['vb_un'])
