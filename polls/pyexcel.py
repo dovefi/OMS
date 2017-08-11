@@ -2,9 +2,6 @@
 import sys, os
 import openpyxl
 
-source = "test.xlsx"
-sheet_name = "Sheet1"
-
 USAGE = """\
     请使用以下的格式填写excel,
     第一行 必须为:学校  域名
@@ -48,13 +45,15 @@ server {
 """
 
 if __name__ == '__main__':
-
+    source = "test.xlsx"
+    sheet_name = "Sheet1"
     workbook = openpyxl.load_workbook(source)
     sheet = workbook.get_sheet_by_name(sheet_name)
 
     if sheet.max_column != 2:
         print(USAGE)
         sys.exit()
+
     start_row = 1
     start_column = 2
 
@@ -67,21 +66,14 @@ if __name__ == '__main__':
     if os.path.isdir("conf") is False:
         os.mkdir('./conf')
 
-    for c in range(start_column, sheet.max_column+1):
-        for r in range(start_row, sheet.max_row+1):
+    for c in range(start_column, sheet.max_column + 1):
+        for r in range(start_row, sheet.max_row + 1):
             if sheet.cell(row=r, column=c).value is not None:
                 f = open("./conf/" + str(sheet.cell(row=r, column=c).value) + ".conf", 'w', encoding='utf-8')
                 f.write(CONF_TEMPLATE.replace("DOMAIN", str(sheet.cell(row=r, column=c).value)))
                 f.close()
             else:
                 log = open("./out.log", 'w+', encoding='utf-8')
-                log.write("第{0}列，第{1}行的域名为空" .format(c,r))
+                log.write("第{0}列，第{1}行的域名为空".format(c, r))
                 log.close()
-                print("第{0}列，第{1}行的域名为空" .format(c,r))
-
-
-
-
-
-
-
+                print("第{0}列，第{1}行的域名为空".format(c, r))
