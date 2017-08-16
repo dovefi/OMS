@@ -11,19 +11,27 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
+    {% if errors %}
+        <div>
+            <label>{{ errors }}</label>
+        </div>
+    {% endif %}
     <form method="post">
     {% csrf_token %}
         <div class="form-group">
+            {{ form.username.errors }}
             <label for="user_name"> User name </label>
-            <input class="form-control" name="user_name" />
+            <input class="form-control" name="username"/>
         </div>
         <div class="form-group">
+            {{ form.password.errors }}
             <label for="user_password"> User password </label>
-            <input class="form-control" type="password" name="user_password" />
+            <input class="form-control" type="password" name="password" />
         </div>
         <div class="form-group">
+            {{ form.email.errors }}
             <label for="user_email"> User email </label>
-            <input class="form-control" name="user_email" />
+            <input class="form-control" name="email" />
         </div>
         <button type="submit" class="btn btn-default"> Submit </button>
     </form>

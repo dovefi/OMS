@@ -111,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Custom User Auth model
+AUTH_USER_MODEL = 'oms.OmsUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

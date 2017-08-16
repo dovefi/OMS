@@ -1,5 +1,5 @@
 from django.db import models
-from .server_list import Server_list
+from .server_list import ServerList
 
 VB_SERVER_HISTORY = {
     'vb_hid' : 'history id',
@@ -11,9 +11,9 @@ VB_SERVER_HISTORY = {
 }
 
 # server history
-class Server_history(models.Model):
+class ServerHistory(models.Model):
     history_id       = models.IntegerField(verbose_name=VB_SERVER_HISTORY['vb_hid'])
-    server_list      = models.ForeignKey(Server_list, verbose_name=VB_SERVER_HISTORY['vb_hip'])
+    server_list      = models.ForeignKey(ServerList, verbose_name=VB_SERVER_HISTORY['vb_hip'])
     history_user     = models.CharField(max_length=15, verbose_name=VB_SERVER_HISTORY['vb_hu'])
     history_datetime = models.DateTimeField(verbose_name=VB_SERVER_HISTORY['vb_hd'])
     db_datetime      = models.DateTimeField(verbose_name=VB_SERVER_HISTORY['vb_dd'])

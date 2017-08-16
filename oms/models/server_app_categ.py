@@ -1,5 +1,5 @@
 from django.db import models
-from .server_fun_categ import Server_fun_categ
+from .server_fun_categ import ServerFunCateg
 
 VB_SERVER_APP_CATEG = {
     'vb_sci' : 'foreign key,service function id,delete cascade ',
@@ -8,8 +8,8 @@ VB_SERVER_APP_CATEG = {
 
 
 # service application category
-class Server_app_categ(models.Model):
-    server_fun_categ = models.ForeignKey(Server_fun_categ, on_delete=models.CASCADE, verbose_name=VB_SERVER_APP_CATEG['vb_sci'])
+class ServerAppCateg(models.Model):
+    server_fun_categ = models.ForeignKey(ServerFunCateg, on_delete=models.CASCADE, verbose_name=VB_SERVER_APP_CATEG['vb_sci'])
     app_categ_name = models.CharField(max_length=30, verbose_name=VB_SERVER_APP_CATEG['vb_acn'])
 
     class Meta:
