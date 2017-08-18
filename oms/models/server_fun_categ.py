@@ -1,5 +1,7 @@
 from django.db import models
 
+__all__ = ['ServerFunCateg']
+
 # table filed content
 VB_SERVER_FUN_CATEG = {
     'vb_scn' : 'name of service function category ',

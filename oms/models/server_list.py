@@ -1,6 +1,8 @@
 from django.db import models
 from .server_app_categ import ServerAppCateg
 
+__all__ = ['ServerList']
+
 VB_SERVER_LIST = {
     'vb_sn'  : 'server name',
     'vb_sw'  : 'server public network ip',

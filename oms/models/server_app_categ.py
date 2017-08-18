@@ -1,6 +1,8 @@
 from django.db import models
 from .server_fun_categ import ServerFunCateg
 
+__all__ = ['ServerAppCateg']
+
 VB_SERVER_APP_CATEG = {
     'vb_sci' : 'foreign key,service function id,delete cascade ',
     'vb_acn' : 'name of service application category ',

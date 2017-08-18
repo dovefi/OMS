@@ -1,6 +1,22 @@
 from django import forms
+from .models import OmsUser
+from django.contrib.auth.forms import AuthenticationForm
 
-class UserForm(forms.Form):
-    user_name = forms.CharField(max_length=11)
-    user_email = forms.EmailField(required=True, max_length=30)
-    user_password = forms.CharField(max_length=15)
+__all__ = ['UserCreateUpdateForm','UserLoginForm']
+
+
+class UserCreateUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = OmsUser
+        fields = [
+            'username', 'email', 'password'
+        ]
+
+
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(max_length=100, required=True)
+    password = forms.CharField(max_length=100, required=True)
+
+    class Meta:
+        fields = ['username', 'password']

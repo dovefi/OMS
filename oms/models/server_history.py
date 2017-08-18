@@ -1,6 +1,8 @@
 from django.db import models
 from .server_list import ServerList
 
+__all__ = ['ServerHistory']
+
 VB_SERVER_HISTORY = {
     'vb_hid' : 'history id',
     'vb_hip' : 'history of the server',
