@@ -95,11 +95,6 @@ class LoginUserView(FormView):
             return redirect(self.get_success_url())
         return super(LoginUserView, self).get(request, *args, **kwargs)
 
-    # def form_invalid(self, form):
-    #     print(form.errors)
-    #     print(form.username.error_messages)
-    #     return super(LoginUserView, self).form_invalid(self)
-
     def form_valid(self, form):
         auto_login(self.request, form.get_user())
         # auto_login(self.request)
